@@ -6,7 +6,6 @@ String.prototype.asciiString = function()
             {
              asciiValuesString += this.charCodeAt(i);
             }
-        console.log("Outputting string " + asciiValuesString);
         return asciiValuesString;
 }
 
