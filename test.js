@@ -1,8 +1,16 @@
 Array.prototype.properSort = function(func = (x,y) => (x >= y ? 1: -1))
 {
-    var sorted = this.sort(func);
-    console.log(sorted);
-    return sorted;
+    // Sort numbers in ascending order.
+    if (this.every(x => !isNaN(x)))
+    {
+        console.log("Sorting numbers.");
+        return this.sort(func);
+    }
+    else
+    {
+        console.log("Sorting strings.");
+        return this;
+    }
 }
 function assert(condition)
 {
@@ -24,8 +32,8 @@ function sortIntegers()
 }
 function sortStrings()
 {
-    var strings = ['1','5','3','2','1000','4'];
-    const stringsSorted = ['1','2','3','4','5','1000'];
+    var strings = ['ad','fa','be','ba','cb','be'];
+    const stringsSorted = ['ad','ba','be','be','cb','fa'];
     strings = strings.properSort();
     for (var i=0; i < strings.length; i++)
     {
