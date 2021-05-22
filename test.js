@@ -1,14 +1,19 @@
-// Returns a string of ASCII values.
-String.prototype.asciiString = function()
-{
-        let asciiValuesString = '';
-            for (let i=0; i<this.length; i++)
-            {
-             asciiValuesString += this.charCodeAt(i);
-            }
-        return asciiValuesString;
-}
 
+function stringComparator(a,b)
+{
+    for (let i=0; i < b.length; i++)
+    {
+        if (a[i] > b[i])
+        {
+            return 1;
+        }
+        else if (a[i] < b[i])
+        {
+            return -1;
+        }
+    }
+    return 1;
+}
 Array.prototype.properSort = function(func = (x,y) => (x >= y ? 1: -1))
 {
     // Sort numbers in ascending order.
@@ -20,6 +25,7 @@ Array.prototype.properSort = function(func = (x,y) => (x >= y ? 1: -1))
     else
     {
         console.log("Sorting strings.");
+        return this.sort(stringComparator);
     }
 }
 function assert(condition)
@@ -27,11 +33,6 @@ function assert(condition)
     if (!condition) {
         throw new Error('Assertion false: ' + console.trace());
     }
-}
-function asciiStringTest()
-{
-    let string = "ab";
-    assert(string.asciiString() == "9798");
 }
 function sortIntegers()
 {
@@ -55,6 +56,5 @@ function sortStrings()
         assert(strings[i] === stringsSorted[i]);
     }
 }
-asciiStringTest();
 sortIntegers();
 sortStrings();
