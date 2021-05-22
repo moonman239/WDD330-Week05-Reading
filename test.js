@@ -1,3 +1,15 @@
+// Returns a string of ASCII values.
+String.prototype.asciiString = function()
+{
+        let asciiValuesString = '';
+            for (let i=0; i<this.length; i++)
+            {
+             asciiValuesString += this.charCodeAt(i);
+            }
+        console.log("Outputting string " + asciiValuesString);
+        return asciiValuesString;
+}
+
 Array.prototype.properSort = function(func = (x,y) => (x >= y ? 1: -1))
 {
     // Sort numbers in ascending order.
@@ -9,7 +21,6 @@ Array.prototype.properSort = function(func = (x,y) => (x >= y ? 1: -1))
     else
     {
         console.log("Sorting strings.");
-        return this;
     }
 }
 function assert(condition)
@@ -18,8 +29,11 @@ function assert(condition)
         throw new Error('Assertion false: ' + console.trace());
     }
 }
-
-const assertModule = require("./assert");
+function asciiStringTest()
+{
+    let string = "ab";
+    assert(string.asciiString() == "9798");
+}
 function sortIntegers()
 {
     var integers = [1,4,2,5,3,1000];
@@ -42,5 +56,6 @@ function sortStrings()
         assert(strings[i] === stringsSorted[i]);
     }
 }
+asciiStringTest();
 sortIntegers();
 sortStrings();
